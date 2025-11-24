@@ -52,7 +52,7 @@
             <ul class="flex flex-col pl-0 mb-0">
                 <li class="mt-0.5 w-full">
                     <a class="py-2.7 bg-blue-500/13 dark:text-white dark:opacity-80 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap rounded-lg px-4 font-semibold text-slate-700 transition-colors"
-                        href="../pages/dashboard.html">
+                        href="{{ route('user.dashboard') }}">
                         <div
                             class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
                             <i class="relative top-0 text-sm leading-normal text-blue-500 ni ni-tv-2"></i>
@@ -63,7 +63,7 @@
 
                 <li class="mt-0.5 w-full">
                     <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
-                        href="../pages/tables.html">
+                        href="{{ route('online_deposit') }}">
                         <div
                             class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
                             <i class="relative top-0 text-sm leading-normal text-orange-500 ni ni-calendar-grid-58"></i>
@@ -74,7 +74,7 @@
 
                 <li class="mt-0.5 w-full">
                     <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
-                        href="../pages/tables.html">
+                        href="{{ route('domestic_transfer') }}">
                         <div
                             class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
                             <i class="relative top-0 text-sm leading-normal text-orange-500 ni ni-calendar-grid-58"></i>
@@ -85,7 +85,7 @@
 
                 <li class="mt-0.5 w-full">
                     <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
-                        href="../pages/tables.html">
+                        href="{{ route('wire_transfer') }}">
                         <div
                             class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
                             <i class="relative top-0 text-sm leading-normal text-orange-500 ni ni-calendar-grid-58"></i>
@@ -96,7 +96,7 @@
 
                 <li class="mt-0.5 w-full">
                     <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
-                        href="../pages/virtual-reality.html">
+                        href="{{ route('virtual_card') }}">
                         <div
                             class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
                             <i class="relative top-0 text-sm leading-normal text-cyan-500 ni ni-app"></i>
@@ -127,6 +127,54 @@
                     </a>
                 </li>
 
+
+                <!-- Parent Transaction Item (Clickable to Toggle) -->
+                {{-- <li class="mt-0.5 w-full">
+                    <a class="dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors cursor-pointer"
+                        onclick="toggleDropdown('transaction-dropdown')">
+                        <div
+                            class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                            <i class="relative top-0 text-sm leading-normal text-slate-700 ni ni-money-coins"></i>
+                        </div>
+                        <span
+                            class="ml-1 text-xs font-bold duration-300 opacity-100 leading-tight uppercase pointer-events-none ease flex-1">Transactions</span>
+                        <i class="fas fa-chevron-down ml-auto text-xs transition-transform duration-300"
+                            id="transaction-chevron"></i>
+                    </a>
+                    <!-- Nested Submenu (Hidden by Default) -->
+                    <ul id="transaction-dropdown" style="list-style-type: decimal"
+                        class="list-disc ml-4 mt-1 space-y-0.5 opacity-0 max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <li class="w-full">
+                            <a class="dark:text-white dark:opacity-80 py-1.5 text-sm ease-nav-brand my-0 mx-0 flex items-center whitespace-nowrap px-4 transition-colors rounded-lg hover:bg-blue-500/5"
+                                href="../pages/profile.html">
+                                <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Credit / Debit
+                                    Transaction</span>
+                            </a>
+                        </li>
+                        <li class="w-full">
+                            <a class="dark:text-white dark:opacity-80 py-1.5 text-sm ease-nav-brand my-0 mx-0 flex items-center whitespace-nowrap px-4 transition-colors rounded-lg hover:bg-blue-500/5"
+                                href="../pages/profile.html">
+                                <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Wire
+                                    Transaction</span>
+                            </a>
+                        </li>
+                        <li class="w-full">
+                            <a class="dark:text-white dark:opacity-80 py-1.5 text-sm ease-nav-brand my-0 mx-0 flex items-center whitespace-nowrap px-4 transition-colors rounded-lg hover:bg-blue-500/5"
+                                href="../pages/profile.html">
+                                <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Domestic
+                                    Transaction</span>
+                            </a>
+                        </li>
+                        <li class="w-full">
+                            <a class="dark:text-white dark:opacity-80 py-1.5 text-sm ease-nav-brand my-0 mx-0 flex items-center whitespace-nowrap px-4 transition-colors rounded-lg hover:bg-blue-500/5"
+                                href="../pages/profile.html">
+                                <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Loan
+                                    Transaction</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li> --}}
+                {{-- end --}}
                 <li class="w-full mt-4">
                     <h6 class="pl-6 ml-2 text-xs font-bold leading-tight uppercase dark:text-white opacity-60">
                         Transaction
@@ -186,7 +234,7 @@
 
                 <li class="mt-0.5 w-full">
                     <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
-                        href="../pages/tables.html">
+                        href="{{ route('profile') }}">
                         <div
                             class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
                             <i
@@ -210,6 +258,7 @@
 
                 <li class="mt-0.5 w-full">
                     <form method="POST" action="{{ route('user.logout') }}">
+                        @csrf
                         <button
                             class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors">
                             <div
@@ -446,6 +495,23 @@
         <script src="{{ asset('assets/js/nav-pills.js') }}"></script>
 
         <script src="{{ asset('assets/js/navbar-sticky.js') }}"></script>
+        <!-- Custom JS for Transaction Dropdown Toggle -->
+        <script>
+            function toggleDropdown(dropdownId) {
+                const dropdown = document.getElementById(dropdownId);
+                const chevron = document.getElementById('transaction-chevron');
+
+                if (dropdown.style.maxHeight === '0px' || dropdown.style.maxHeight === '') {
+                    dropdown.style.maxHeight = dropdown.scrollHeight + 'px';
+                    dropdown.style.opacity = '1';
+                    chevron.style.transform = 'rotate(180deg)';
+                } else {
+                    dropdown.style.maxHeight = '0px';
+                    dropdown.style.opacity = '0';
+                    chevron.style.transform = 'rotate(0deg)';
+                }
+            }
+        </script>
         <!-- javascript End -->
 </body>
 

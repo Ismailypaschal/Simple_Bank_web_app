@@ -1,3 +1,22 @@
+{{-- resources/views/user/notification.blade.php --}}
+{{-- <div
+    style="text-align: center;border:1px solid #d1d5db; background:#fff7ed; padding:16px; border-radius:6px; color:#92400e; max-width:720px; margin:12px auto;">
+    <strong style="display:block; margin-bottom:8px; font-size:16px;">
+        Password Reset Request Sent Successfully!!
+    </strong>
+
+    <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+        <a" href="{{ route('password.request') }}" style="background:#0ea5a3; color:#fff; border:none; padding:8px 12px; border-radius:4px; cursor:pointer;">Revisit the Forgotten password page</a>
+
+            <form method="POST" action="{{ route('logout') }}" style="display:inline;">
+            @csrf
+            <button type="submit" style="background:#ef4444; color:#fff; border:none; padding:8px 12px; border-radius:4px; cursor:pointer;">
+                Log out
+            </button>
+        </form>
+    </div>
+</div> --}}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +26,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/img/apple-icon.png') }}" />
     <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}" />
-    <title>Sign In</title>
+    <title>Forgot Password Request Notification Alert</title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <!-- Font Awesome Icons -->
@@ -52,13 +71,34 @@
                         <div navbar-menu
                             class="items-center flex-grow transition-all duration-500 lg-max:overflow-hidden ease lg-max:max-h-0 basis-full lg:flex lg:basis-auto">
                             <ul class="flex flex-col pl-0 mx-auto mb-0 list-none lg:flex-row xl:ml-auto">
-                                {{-- <li>
+                                <li>
+                                    <a class="flex items-center px-4 py-2 mr-2 font-normal transition-all ease-in-out lg-max:opacity-0 duration-250 text-sm text-slate-700 lg:px-2"
+                                        aria-current="page" href="">
+                                        <i class="mr-1 fa fa-chart-pie opacity-60"></i>
+                                        Dashboard
+                                    </a>
+                                </li>
+                                <li>
                                     <a class="block px-4 py-2 mr-2 font-normal transition-all ease-in-out lg-max:opacity-0 duration-250 text-sm text-slate-700 lg:px-2"
-                                        href="{{ route('user.signup') }}">
+                                        href="">
+                                        <i class="mr-1 fa fa-user opacity-60"></i>
+                                        Profile
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="block px-4 py-2 mr-2 font-normal transition-all ease-in-out lg-max:opacity-0 duration-250 text-sm text-slate-700 lg:px-2"
+                                        href="">
                                         <i class="mr-1 fas fa-user-circle opacity-60"></i>
                                         Sign Up
                                     </a>
-                                </li> --}}
+                                </li>
+                                <li>
+                                    <a class="block px-4 py-2 mr-2 font-normal transition-all ease-in-out lg-max:opacity-0 duration-250 text-sm text-slate-700 lg:px-2"
+                                        href="">
+                                        <i class="mr-1 fas fa-key opacity-60"></i>
+                                        Sign In
+                                    </a>
+                                </li>
                             </ul>
                             <!-- online builder btn  -->
                             <!-- <li class="flex items-center">
@@ -71,11 +111,10 @@
                 </li> -->
                             <ul class="hidden pl-0 mb-0 list-none lg:block lg:flex-row">
                                 <li>
-                                    <a class="block px-4 py-2 mr-2 font-normal transition-all ease-in-out lg-max:opacity-0 duration-250 text-sm text-slate-700 lg:px-2"
-                                        href="{{ route('login') }}">
-                                        <i class="mr-1 fas fa-user-circle opacity-60"></i>
-                                        Sign In
-                                    </a>
+                                    <a href="https://www.creative-tim.com/product/argon-dashboard-tailwind"
+                                        target="_blank"
+                                        class="inline-block px-8 py-2 mb-0 mr-1 font-bold leading-normal text-center text-white align-middle transition-all ease-in bg-blue-500 border-0 rounded-lg shadow-md cursor-pointer hover:-translate-y-px hover:shadow-xs active:opacity-85 text-xs tracking-tight-rem">Free
+                                        Download</a>
                                 </li>
                             </ul>
                         </div>
@@ -94,49 +133,25 @@
                             <div
                                 class="relative flex flex-col min-w-0 break-words bg-transparent border-0 shadow-none lg:py4 dark:bg-gray-950 rounded-2xl bg-clip-border">
                                 <div class="p-6 pb-0 mb-0">
-                                    <h4 class="font-bold">Sign In</h4>
-                                    <p class="mb-0">Enter your email and password to sign in</p>
+                                    <h4 class="font-bold">Reset Request</h4>
+
                                 </div>
                                 <div class="flex-auto p-6">
-                                    <form role="form" method="POST" action="{{ route('store.signin') }}">
-                                        @error('email')
-                                            <p class="text-sm text-red-600">{{ $message }}</p>
-                                        @enderror
-                                        @csrf
-                                        <div class="mb-4">
-                                            <input name="email" type="email" placeholder="Email"
-                                                class="focus:shadow-primary-outline dark:bg-gray-950 dark:placeholder:text-white/80 dark:text-white/80 text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding p-3 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" />
-                                        </div>
-                                        <div class="mb-4">
-                                            <input name="password" type="password" placeholder="Password"
-                                                class="focus:shadow-primary-outline dark:bg-gray-950 dark:placeholder:text-white/80 dark:text-white/80 text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding p-3 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" />
-                                        </div>
 
-                                        {{-- <div class="flex items-center pl-12 mb-0.5 text-left min-h-6">
-                                            <input id="rememberMe"
-                                                class="mt-0.5 rounded-10 duration-250 ease-in-out after:rounded-circle after:shadow-2xl after:duration-250 checked:after:translate-x-5.3 h-5 relative float-left -ml-12 w-10 cursor-pointer appearance-none border border-solid border-gray-200 bg-zinc-700/10 bg-none bg-contain bg-left bg-no-repeat align-top transition-all after:absolute after:top-px after:h-4 after:w-4 after:translate-x-px after:bg-white after:content-[''] checked:border-blue-500/95 checked:bg-blue-500/95 checked:bg-none checked:bg-right"
-                                                type="checkbox" />
-                                            <label
-                                                class="ml-2 font-normal cursor-pointer select-none text-sm text-slate-700"
-                                                for="rememberMe">Remember me</label>
-                                        </div> --}}
-                                        {{-- forgoten password --}}
-                                        <a href="{{ route('password.request') }}"
-                                            class="font-semibold text-transparent bg-clip-text bg-gradient-to-tl from-blue-500 to-violet-500">Forgot
-                                            password?</a>
-                                        <div class="text-center">
-                                            <button type="submit"
-                                                class="inline-block w-full px-16 py-3.5 mt-6 mb-0 font-bold leading-normal text-center text-white align-middle transition-all bg-blue-500 border-0 rounded-lg cursor-pointer hover:-translate-y-px active:opacity-85 hover:shadow-xs text-sm ease-in tracking-tight-rem shadow-md bg-150 bg-x-25">Sign
-                                                in</button>
-                                        </div>
-                                    </form>
+                                    <div class="text-center">
+                                        <p
+                                            class="inline-block w-full px-16 py-3.5 mt-6 mb-0 font-bold leading-normal text-center text-white align-middle transition-all bg-blue-500 border-0 rounded-lg cursor-pointer hover:-translate-y-px active:opacity-85 hover:shadow-xs text-sm ease-in tracking-tight-rem shadow-md bg-150 bg-x-25">
+                                            Email
+                                            Password Reset Request Sent Successfully!!
+                                        </p>
+                                    </div>
                                 </div>
                                 <div
                                     class="border-black/12.5 rounded-b-2xl border-t-0 border-solid p-6 text-center pt-0 px-1 sm:px-6">
-                                    <p class="mx-auto mb-6 leading-normal text-sm">Don't have an account? <a
-                                            href="{{ route('user.signup') }}"
+                                    <p class="mx-auto mb-6 leading-normal text-sm">Remember Password? <a
+                                            href="{{ route('login') }}"
                                             class="font-semibold text-transparent bg-clip-text bg-gradient-to-tl from-blue-500 to-violet-500">Sign
-                                            up</a></p>
+                                            in</a></p>
                                 </div>
                             </div>
                         </div>
@@ -162,8 +177,7 @@
                 <div class="flex-shrink-0 w-full max-w-full mx-auto mb-6 text-center lg:flex-0 lg:w-8/12">
                     <a href="javascript:;" target="_blank" class="mb-2 mr-4 text-slate-400 sm:mb-0 xl:mr-12"> Company
                     </a>
-                    <a href="javascript:;" target="_blank" class="mb-2 mr-4 text-slate-400 sm:mb-0 xl:mr-12"> About
-                        Us
+                    <a href="javascript:;" target="_blank" class="mb-2 mr-4 text-slate-400 sm:mb-0 xl:mr-12"> About Us
                     </a>
                     <a href="javascript:;" target="_blank" class="mb-2 mr-4 text-slate-400 sm:mb-0 xl:mr-12"> Team
                     </a>

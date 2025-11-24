@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 
-class sendEmailVerificationNotificationController extends Controller
+class SendEmailVerificationNotificationController extends Controller
 {
     public function sendNotification()
     {

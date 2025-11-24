@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/img/apple-icon.png') }}" />
     <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}" />
-    <title>Sign In</title>
+    <title>Reset Password</title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <!-- Font Awesome Icons -->
@@ -72,9 +72,9 @@
                             <ul class="hidden pl-0 mb-0 list-none lg:block lg:flex-row">
                                 <li>
                                     <a class="block px-4 py-2 mr-2 font-normal transition-all ease-in-out lg-max:opacity-0 duration-250 text-sm text-slate-700 lg:px-2"
-                                        href="{{ route('login') }}">
+                                        href="{{ route('user.signup') }}">
                                         <i class="mr-1 fas fa-user-circle opacity-60"></i>
-                                        Sign In
+                                        Sign Up
                                     </a>
                                 </li>
                             </ul>
@@ -94,49 +94,58 @@
                             <div
                                 class="relative flex flex-col min-w-0 break-words bg-transparent border-0 shadow-none lg:py4 dark:bg-gray-950 rounded-2xl bg-clip-border">
                                 <div class="p-6 pb-0 mb-0">
-                                    <h4 class="font-bold">Sign In</h4>
-                                    <p class="mb-0">Enter your email and password to sign in</p>
+                                    <h4 class="font-bold">Reset Password</h4>
+                                    <p class="mb-0">Enter New Password</p>
                                 </div>
                                 <div class="flex-auto p-6">
-                                    <form role="form" method="POST" action="{{ route('store.signin') }}">
+                                    <form role="form" method="POST" action="{{ route('password.update') }}">
+                                        @csrf
+                                        <input type="hidden" name="token" value="{{ $token }}">
                                         @error('email')
                                             <p class="text-sm text-red-600">{{ $message }}</p>
                                         @enderror
-                                        @csrf
+
+
                                         <div class="mb-4">
                                             <input name="email" type="email" placeholder="Email"
-                                                class="focus:shadow-primary-outline dark:bg-gray-950 dark:placeholder:text-white/80 dark:text-white/80 text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding p-3 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" />
-                                        </div>
-                                        <div class="mb-4">
-                                            <input name="password" type="password" placeholder="Password"
+                                                value="{{ old('email') }}"
                                                 class="focus:shadow-primary-outline dark:bg-gray-950 dark:placeholder:text-white/80 dark:text-white/80 text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding p-3 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" />
                                         </div>
 
-                                        {{-- <div class="flex items-center pl-12 mb-0.5 text-left min-h-6">
-                                            <input id="rememberMe"
-                                                class="mt-0.5 rounded-10 duration-250 ease-in-out after:rounded-circle after:shadow-2xl after:duration-250 checked:after:translate-x-5.3 h-5 relative float-left -ml-12 w-10 cursor-pointer appearance-none border border-solid border-gray-200 bg-zinc-700/10 bg-none bg-contain bg-left bg-no-repeat align-top transition-all after:absolute after:top-px after:h-4 after:w-4 after:translate-x-px after:bg-white after:content-[''] checked:border-blue-500/95 checked:bg-blue-500/95 checked:bg-none checked:bg-right"
-                                                type="checkbox" />
-                                            <label
-                                                class="ml-2 font-normal cursor-pointer select-none text-sm text-slate-700"
-                                                for="rememberMe">Remember me</label>
+                                        {{-- <div class="mb-4">
+                                            <input name="password" type="password" placeholder="Old Password"
+                                                class="focus:shadow-primary-outline dark:bg-gray-950 dark:placeholder:text-white/80 dark:text-white/80 text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding p-3 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" />
                                         </div> --}}
+
+                                        <div class="mb-4">
+                                            <input name="password" type="password" placeholder="New Password"
+                                                class="focus:shadow-primary-outline dark:bg-gray-950 dark:placeholder:text-white/80 dark:text-white/80 text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding p-3 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" />
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <input name="password_confirmation" type="password"
+                                                placeholder="Confirm Password"
+                                                class="focus:shadow-primary-outline dark:bg-gray-950 dark:placeholder:text-white/80 dark:text-white/80 text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding p-3 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" />
+                                        </div>
+
+
                                         {{-- forgoten password --}}
                                         <a href="{{ route('password.request') }}"
                                             class="font-semibold text-transparent bg-clip-text bg-gradient-to-tl from-blue-500 to-violet-500">Forgot
                                             password?</a>
                                         <div class="text-center">
                                             <button type="submit"
-                                                class="inline-block w-full px-16 py-3.5 mt-6 mb-0 font-bold leading-normal text-center text-white align-middle transition-all bg-blue-500 border-0 rounded-lg cursor-pointer hover:-translate-y-px active:opacity-85 hover:shadow-xs text-sm ease-in tracking-tight-rem shadow-md bg-150 bg-x-25">Sign
-                                                in</button>
+                                                class="inline-block w-full px-16 py-3.5 mt-6 mb-0 font-bold leading-normal text-center text-white align-middle transition-all bg-blue-500 border-0 rounded-lg cursor-pointer hover:-translate-y-px active:opacity-85 hover:shadow-xs text-sm ease-in tracking-tight-rem shadow-md bg-150 bg-x-25">
+                                                Reset Password</button>
                                         </div>
                                     </form>
                                 </div>
                                 <div
                                     class="border-black/12.5 rounded-b-2xl border-t-0 border-solid p-6 text-center pt-0 px-1 sm:px-6">
                                     <p class="mx-auto mb-6 leading-normal text-sm">Don't have an account? <a
-                                            href="{{ route('user.signup') }}"
+                                            href="{{ route('login') }}"
                                             class="font-semibold text-transparent bg-clip-text bg-gradient-to-tl from-blue-500 to-violet-500">Sign
-                                            up</a></p>
+                                            in</a></p>
                                 </div>
                             </div>
                         </div>

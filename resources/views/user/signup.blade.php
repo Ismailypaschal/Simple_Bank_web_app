@@ -22,7 +22,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/img/apple-icon.png') }}" />
     <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}" />
-    <title>Argon Dashboard 2 Tailwind by Creative Tim</title>
+    <title>Sign Up</title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <!-- Font Awesome Icons -->
@@ -62,34 +62,13 @@
             <div navbar-menu
                 class="items-center flex-grow transition-all ease duration-350 lg-max:bg-white lg-max:max-h-0 lg-max:overflow-hidden basis-full rounded-2xl lg:flex lg:basis-auto">
                 <ul class="flex flex-col pl-0 mx-auto mb-0 list-none lg-max:py-2 lg:flex-row xl:ml-auto">
-                    <li>
-                        <a class="flex items-center px-4 py-2 mr-2 font-normal text-white transition-all ease-in-out duration-250 lg-max:opacity-0 lg-max:text-slate-700 text-sm lg:px-2 lg:hover:text-white/75"
-                            aria-current="page" href="../pages/dashboard.html">
-                            <i class="mr-1 text-white lg-max:text-slate-700 fa fa-chart-pie opacity-60"></i>
-                            Dashboard
-                        </a>
-                    </li>
-                    <li>
+                    {{-- <li>
                         <a class="block px-4 py-2 mr-2 font-normal text-white transition-all ease-in-out duration-250 lg-max:opacity-0 lg-max:text-slate-700 text-sm lg:px-2 lg:hover:text-white/75"
-                            href="../pages/profile.html">
-                            <i class="mr-1 text-white lg-max:text-slate-700 fa fa-user opacity-60"></i>
-                            Profile
-                        </a>
-                    </li>
-                    <li>
-                        <a class="block px-4 py-2 mr-2 font-normal text-white transition-all ease-in-out duration-250 lg-max:opacity-0 lg-max:text-slate-700 text-sm lg:px-2 lg:hover:text-white/75"
-                            href="../pages/sign-up.html">
-                            <i class="mr-1 text-white lg-max:text-slate-700 fas fa-user-circle opacity-60"></i>
-                            Sign Up
-                        </a>
-                    </li>
-                    <li>
-                        <a class="block px-4 py-2 mr-2 font-normal text-white transition-all ease-in-out duration-250 lg-max:opacity-0 lg-max:text-slate-700 text-sm lg:px-2 lg:hover:text-white/75"
-                            href="../pages/sign-in.html">
+                            href="{{ route('login') }}">
                             <i class="mr-1 text-white lg-max:text-slate-700 fas fa-key opacity-60"></i>
                             Sign In
                         </a>
-                    </li>
+                    </li> --}}
                 </ul>
                 <!-- online builder btn  -->
                 <!-- <li class="flex items-center">
@@ -102,9 +81,11 @@
           </li> -->
                 <ul class="hidden pl-0 mb-0 list-none lg:block lg:flex-row">
                     <li>
-                        <a href="https://www.creative-tim.com/product/argon-dashboard-tailwind" target="_blank"
-                            class="inline-block px-8 py-2 mb-0 mr-1 font-bold leading-normal text-center align-middle transition-all ease-in bg-transparent border-0 rounded-lg shadow-md cursor-pointer hover:-translate-y-px hover:shadow-xs active:opacity-85 text-xs tracking-tight-rem bg-gradient-to-tl from-gray-400 to-gray-100 text-slate-800">Free
-                            Download</a>
+                        <a class="block px-4 py-2 mr-2 font-normal text-white transition-all ease-in-out duration-250 lg-max:opacity-0 lg-max:text-slate-700 text-sm lg:px-2 lg:hover:text-white/75"
+                            href="{{ route('login') }}">
+                            <i class="mr-1 text-white lg-max:text-slate-700 fas fa-key opacity-60"></i>
+                            Sign In
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -206,12 +187,15 @@
 
                                 {{-- Form data --}}
                                 <form role="form text-left" method="POST" action="{{ route('store.signup') }}">
-                                    @error('email')<p class="text-sm text-red-600">{{ $message }}</p>@enderror
+                                    @error('email')
+                                        <p class="text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                     @csrf
                                     <div class="mb-4">
                                         <input type="text" name="name"
                                             class="placeholder:text-gray-500 text-sm focus:shadow-primary-outline leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-blue-500 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
-                                            placeholder="Full Name" aria-label="Name" aria-describedby="email-addon" />
+                                            placeholder="Full Name" aria-label="Name"
+                                            aria-describedby="email-addon" />
                                     </div>
                                     <div class="mb-4">
                                         <input type="email" name="email"
@@ -238,7 +222,7 @@
                                             up</button>
                                     </div>
                                     <p class="mt-4 mb-0 leading-normal text-sm">Already have an account? <a
-                                            href="../pages/sign-in.html" class="font-bold text-slate-700">Sign in</a>
+                                            href="{{ route('login') }}" class="font-bold text-slate-700">Sign in</a>
                                     </p>
                                 </form>
                                 {{-- End Form data --}}
@@ -256,13 +240,16 @@
                     <div class="flex-shrink-0 w-full max-w-full mx-auto mb-6 text-center lg:flex-0 lg:w-8/12">
                         <a href="javascript:;" target="_blank" class="mb-2 mr-4 text-slate-400 sm:mb-0 xl:mr-12">
                             Company </a>
-                        <a href="javascript:;" target="_blank" class="mb-2 mr-4 text-slate-400 sm:mb-0 xl:mr-12"> About
+                        <a href="javascript:;" target="_blank" class="mb-2 mr-4 text-slate-400 sm:mb-0 xl:mr-12">
+                            About
                             Us </a>
-                        <a href="javascript:;" target="_blank" class="mb-2 mr-4 text-slate-400 sm:mb-0 xl:mr-12"> Team
+                        <a href="javascript:;" target="_blank" class="mb-2 mr-4 text-slate-400 sm:mb-0 xl:mr-12">
+                            Team
                         </a>
                         <a href="javascript:;" target="_blank" class="mb-2 mr-4 text-slate-400 sm:mb-0 xl:mr-12">
                             Products </a>
-                        <a href="javascript:;" target="_blank" class="mb-2 mr-4 text-slate-400 sm:mb-0 xl:mr-12"> Blog
+                        <a href="javascript:;" target="_blank" class="mb-2 mr-4 text-slate-400 sm:mb-0 xl:mr-12">
+                            Blog
                         </a>
                         <a href="javascript:;" target="_blank" class="mb-2 mr-4 text-slate-400 sm:mb-0 xl:mr-12">
                             Pricing </a>
