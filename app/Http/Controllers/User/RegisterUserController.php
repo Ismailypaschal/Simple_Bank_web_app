@@ -34,15 +34,14 @@ class RegisterUserController extends Controller
             'phone' => $data['phone'],
             'password' => bcrypt($data['password'])
         ]);
-        $user = auth()->user(); 
 
-        $user_id = User::findOrFail($user->id);
-        // Genereate account number 
-        $account_number = rand(10, 10);
-        // Create User Account details 
+        // Generate account number
+        $account_number = rand(1000000000, 9999999999);
+        // Create User Account details
         $account = Account::create([
-            'user_id' => $user_id['user_id'],
-            'account_number' => $account_number
+            'user_id' => $user->id,
+            'account_number' => $account_number,
+            'currency' => 'NGN' ?? 'null',
         ]);
         // Send verification email
         $user->sendEmailVerificationNotification();
