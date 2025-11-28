@@ -18,10 +18,32 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->string('account_number', 10)->unique();
-            $table->enum('account_type', ['savings', 'current', 'checking', 'investment']);
-            $table->string('currency');
-            $table->enum('status', ['active', 'suspended', 'close']);
-            $table->decimal('balance', '15', '2');
+            $table->enum('account_type', ['savings', 'current', 'checking', 'investment'])->default('savings');
+            $table->string('currency')->default('NGN');
+            $table->enum('status', ['active', 'suspended', 'close'])->default('active');
+            $table->decimal('balance', '15', '2')->default(0);
+            $table->timestamps();
+        });
+
+        // Deposit table
+        Schema::create('deposits', function (Blueprint $table) {
+            $table->id();
+            $table->foreignIdFor(Account::class)->constrained()->cascadeOnDelete();
+            $table->decimal('amount', 15, 2);
+            $table->enum('deposit_type', ['Bitcoin', 'Dogecoin', 'Ethereum', 'Paypal']);
+            $table->string('deposit_address');
+            $table->string('deposit_proof');
+            $table->timestamps();
+        });
+
+        // Withdrawal table
+        Schema::create('withdrawals', function (Blueprint $table) {
+            $table->id();
+            $table->foreignIdFor(Account::class)->constrained()->cascadeOnDelete();
+            $table->decimal('amount', 15, 2);
+            $table->enum('withdraw_type', ['Bitcoin', 'Dogecoin', 'Ethereum', 'Paypal']);
+            $table->string('withdraw_address');
+            $table->string('deposit_proof');
             $table->timestamps();
         });
 
@@ -31,7 +53,7 @@ return new class extends Migration
             $table->foreignIdFor(Account::class)->constrained()->cascadeOnDelete();
             $table->string('reference')->unique();
             $table->enum('type', ['debit', 'credit']);
-            $table->string('amount');
+            $table->decimal('amount', 15, 2);
             $table->decimal('balance_before', 15, 2);
             $table->decimal('balance_after', 15, 2);
             $table->enum('category', [
@@ -58,7 +80,7 @@ return new class extends Migration
             $table->string('receiver_account_number');
             $table->string('receiver_bank');
             $table->enum('type', ['wire', 'domestic']);
-            $table->string('amount');
+            $table->decimal('amount', 15, 2);
             $table->enum('status', ['pending', 'successful', 'failed']);
             $table->timestamps();
         });
@@ -92,6 +114,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('accounts');
+        Schema::dropIfExists('deposits');
+        Schema::dropIfExists('withdrawals');
         Schema::dropIfExists('transactions');
         Schema::dropIfExists('transfers');
         Schema::dropIfExists('cards');

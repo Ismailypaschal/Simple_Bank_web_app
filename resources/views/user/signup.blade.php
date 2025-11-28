@@ -192,21 +192,49 @@
                                     @enderror
                                     @csrf
                                     <div class="mb-4">
-                                        <input type="text" name="name"
+                                        <input type="text" name="first_name"
                                             class="placeholder:text-gray-500 text-sm focus:shadow-primary-outline leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-blue-500 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
-                                            placeholder="Full Name" aria-label="Name"
-                                            aria-describedby="email-addon" />
+                                            placeholder="First Name" aria-label="First Name"
+                                            aria-describedby="name-addon" required />
+                                        @error('first_name')
+                                            <p class="text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-4">
+                                        <input type="text" name="last_name"
+                                            class="placeholder:text-gray-500 text-sm focus:shadow-primary-outline leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-blue-500 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
+                                            placeholder="Last Name" aria-label="Last Name"
+                                            aria-describedby="name-addon" required />
+                                        @error('last_name')
+                                            <p class="text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                     <div class="mb-4">
                                         <input type="email" name="email"
                                             class="placeholder:text-gray-500 text-sm focus:shadow-primary-outline leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-blue-500 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
-                                            placeholder="Email" aria-label="Email" aria-describedby="email-addon" />
+                                            placeholder="Email" aria-label="Email" aria-describedby="email-addon"
+                                            required />
+                                        @error('email')
+                                            <p class="text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-4">
+                                        <input type="text" name="phone"
+                                            class="placeholder:text-gray-500 text-sm focus:shadow-primary-outline leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-blue-500 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
+                                            placeholder="Phone Number" aria-label="Phone Number"
+                                            aria-describedby="phone-addon" required />
+                                        @error('phone')
+                                            <p class="text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                     <div class="mb-4">
                                         <input type="password" name="password"
                                             class="placeholder:text-gray-500 text-sm focus:shadow-primary-outline leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-blue-500 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
                                             placeholder="Password" aria-label="Password"
-                                            aria-describedby="password-addon" />
+                                            aria-describedby="password-addon" required />
+                                        @error('password')
+                                            <p class="text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                     <div class="min-h-6 pl-7 mb-0.5 block">
                                         <input
