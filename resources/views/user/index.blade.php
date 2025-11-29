@@ -119,7 +119,7 @@
 
                             </ul>
                             @if ($transactions->isEmpty())
-                                <p class="text-gray-500 text-center h-full">No Order found.</p>
+                                <p class="text-gray-500 text-center h-full">No Transaction found.</p>
                             @endif
                         </div>
                     </div>

@@ -76,17 +76,33 @@ return new class extends Migration
         Schema::create('transfers', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Account::class)->constrained()->cascadeOnDelete();
-            $table->string('reference');
-            $table->string('receiver_account_number');
-            $table->string('receiver_bank');
-            $table->enum('type', ['wire', 'domestic']);
             $table->decimal('amount', 15, 2);
+            $table->string('reference');
+            $table->string('bene_account_name');
+            $table->string('bene_account_number');
+            $table->string('bank_name');
+            $table->string('country')->nullable();
+            $table->string('swift_code')->nullable();
+            $table->string('routing_number')->nullable();
+            $table->enum('account_type', ['savings', 'current', 'checking', 'investment']);
+            $table->enum('transfer_type', ['wire', 'domestic']);
             $table->enum('status', ['pending', 'successful', 'failed']);
+            $table->string('description');
             $table->timestamps();
         });
 
-
         // Card table
+        Schema::create('cards', function (Blueprint $table) {
+            $table->id();
+            $table->foreignIdFor(Account::class)->constrained()->cascadeOnDelete();
+            $table->string('card_number');
+            $table->enum('type', ['visa', 'mastercard', 'verve', 'americanexpress']);
+            $table->date('expiry_date');
+            $table->enum('status', ['active', 'blocked', 'pending', 'expired'])->default('active');
+            $table->timestamps();
+        });
+
+        // Loan table
         Schema::create('loans', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();

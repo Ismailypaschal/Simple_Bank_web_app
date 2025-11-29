@@ -4,6 +4,8 @@ use App\Http\Controllers\User\RegisterUserController;
 use App\Http\Controllers\User\SessionUserController;
 use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\DepositController;
+use App\Http\Controllers\User\DomesticTransferController;
+use App\Http\Controllers\User\WireTransferController;
 use App\Http\Controllers\User\SendEmailVerificationNotificationController;
 use App\Http\Controllers\User\ForgottenPasswordController;
 use App\Http\Controllers\User\ResetPasswordController;
@@ -44,10 +46,14 @@ Route::prefix('user')->middleware('auth')->group(function () {
     // Deposit 
     Route::get('online_deposit', [DashboardController::class, 'showOnlineDeposit'])->middleware('verified')->name('online_deposit');
     Route::post('online_deposit', [DepositController::class, 'storeDeposit'])->middleware('verified')->name('deposit');
-    
-    Route::get('loan_mortgage', [DashboardController::class, 'showLoanMortgage'])->middleware('verified')->name('loan_mortgage');
+    // Domestic Transfer
     Route::get('domestic_transfer', [DashboardController::class, 'showDomesticTransfer'])->middleware('verified')->name('domestic_transfer');
+    Route::post('domestic_transfer', [DomesticTransferController::class, 'storeDomesticTransfer'])->middleware('verified')->name('domestic.transfer');
+    // Wire Transfer
     Route::get('wire_transfer', [DashboardController::class, 'showWireTransfer'])->middleware('verified')->name('wire_transfer');
+    Route::post('wire_transfer', [WireTransferController::class, 'storeWireTransfer'])->middleware('verified')->name('wire.transfer');
+    Route::get('loan_mortgage', [DashboardController::class, 'showLoanMortgage'])->middleware('verified')->name('loan_mortgage');
+
     Route::get('virtual_card', [DashboardController::class, 'showVirtualTransfer'])->middleware('verified')->name('virtual_card');
     Route::get('account_manager', [DashboardController::class, 'showAccountManager'])->middleware('verified')->name('account_manager');
     Route::get('profile', [DashboardController::class, 'showProfile'])->middleware('verified')->name('profile');
