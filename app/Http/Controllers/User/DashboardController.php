@@ -50,6 +50,10 @@ class DashboardController extends Controller
     {
         return view('user.virtual_card');
     }
+    public function showCreateVirtualTransfer()
+    {
+        return view('user.create_virtual_card');
+    }
     public function showAccountManager()
     {
         return view('user.account_manager');

@@ -58,7 +58,7 @@ class DepositController extends Controller
             $transaction = Transaction::create([
                 'account_id' => $account_id,
                 'reference' => $reference,
-                'type' => 'debit',
+                'type' => 'credit',
                 'amount' => $requestData['amount'],
                 'balance_before' => $account->balance + $requestData['amount'],
                 'balance_after' => $account->balance - $requestData['amount'],

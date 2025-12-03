@@ -18,7 +18,7 @@ class DomesticTransferController extends Controller
         try {
             $requestData = $request->validate([
                 'amount' => ['required', 'min:1'],
-                'bank_name' => ['required', 'min:6'],
+                'bank_name' => ['required', 'min:3'],
                 'bene_account_name' => ['required', 'min:6'],
                 'account_type' => ['required'],
                 'bene_account_number' => ['required', 'min:10', 'max:10'],
@@ -71,7 +71,6 @@ class DomesticTransferController extends Controller
                 'source_account' => $account->account_number,
                 'destination_account' => $requestData['bene_account_number']
             ]);
-
         } catch (\Exception $e) {
             $bene = $requestData['bene_account_number'] ?? 'this beneficiary account';
 

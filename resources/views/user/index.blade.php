@@ -107,11 +107,15 @@
                                                 @if ($transaction->type == 'debit')
                                                     <p class="font-semibold text-red-600">
                                                         -${{ number_format($transaction->amount, 2) }}</p>
+                                                    <p class="text-sm">
+                                                        {{ $transaction->type }}</p>
                                                 @endif
-                                                <p class="font-semibold text-green-600">
-                                                    -${{ number_format($transaction->amount, 2) }}</p>
-                                                <p class="text-sm text-slate-500 dark:text-slate-400">
-                                                    {{ $transaction->type }}</p>
+                                                @if ($transaction->type == 'credit')
+                                                    <p class="font-semibold text-green-600" style="color: rgb(17, 168, 17)">
+                                                        +${{ number_format($transaction->amount, 2) }}</p>
+                                                    <p class="text-sm">
+                                                        {{ $transaction->type }}</p>
+                                                @endif
                                             </div>
                                         </div>
                                     </li>
@@ -131,13 +135,13 @@
                             <svg class="w-full h-full" viewbox="0 0 36 36">
                                 <path
                                     d="M18 2.0845
-                                                                                               a 15.9155 15.9155 0 0 1 0 31.831
-                                                                                               a 15.9155 15.9155 0 0 1 0 -31.831"
+                                                                                                                       a 15.9155 15.9155 0 0 1 0 31.831
+                                                                                                                       a 15.9155 15.9155 0 0 1 0 -31.831"
                                     fill="none" stroke="#243347" stroke-width="3">
                                 </path>
                                 <path
                                     d="M18 2.0845
-                                                                                               a 15.9155 15.9155 0 0 1 0 31.831"
+                                                                                                                       a 15.9155 15.9155 0 0 1 0 31.831"
                                     fill="none" stroke="#2a7aea" stroke-dasharray="75, 100" stroke-linecap="round"
                                     stroke-width="3">
                                 </path>

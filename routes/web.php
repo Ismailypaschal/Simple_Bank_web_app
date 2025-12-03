@@ -55,6 +55,7 @@ Route::prefix('user')->middleware('auth')->group(function () {
     Route::get('loan_mortgage', [DashboardController::class, 'showLoanMortgage'])->middleware('verified')->name('loan_mortgage');
 
     Route::get('virtual_card', [DashboardController::class, 'showVirtualTransfer'])->middleware('verified')->name('virtual_card');
+    Route::get('create_virtual_card', [DashboardController::class, 'showCreateVirtualTransfer'])->middleware('verified')->name('create.virtual_card');
     Route::get('account_manager', [DashboardController::class, 'showAccountManager'])->middleware('verified')->name('account_manager');
     Route::get('profile', [DashboardController::class, 'showProfile'])->middleware('verified')->name('profile');
 
