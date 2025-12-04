@@ -95,10 +95,12 @@ return new class extends Migration
         Schema::create('cards', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Account::class)->constrained()->cascadeOnDelete();
+            $table->string('card_name');
             $table->string('card_number');
-            $table->enum('type', ['visa', 'mastercard', 'verve', 'americanexpress']);
+            $table->enum('type', ['Visa', 'Mastercard', 'Verve', 'American Express', 'Discover']);
             $table->date('expiry_date');
             $table->enum('status', ['active', 'blocked', 'pending', 'expired'])->default('active');
+            $table->boolean('default_card')->default(false); 
             $table->timestamps();
         });
 

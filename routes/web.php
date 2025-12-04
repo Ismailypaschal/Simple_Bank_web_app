@@ -6,6 +6,7 @@ use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\DepositController;
 use App\Http\Controllers\User\DomesticTransferController;
 use App\Http\Controllers\User\WireTransferController;
+use App\Http\Controllers\User\VirtualCardController;
 use App\Http\Controllers\User\SendEmailVerificationNotificationController;
 use App\Http\Controllers\User\ForgottenPasswordController;
 use App\Http\Controllers\User\ResetPasswordController;
@@ -56,6 +57,7 @@ Route::prefix('user')->middleware('auth')->group(function () {
 
     Route::get('virtual_card', [DashboardController::class, 'showVirtualTransfer'])->middleware('verified')->name('virtual_card');
     Route::get('create_virtual_card', [DashboardController::class, 'showCreateVirtualTransfer'])->middleware('verified')->name('create.virtual_card');
+    Route::post('create_virtual_card', action: [VirtualCardController::class, 'generatevirtualCard'])->middleware('verified')->name('store.virtual_card');
     Route::get('account_manager', [DashboardController::class, 'showAccountManager'])->middleware('verified')->name('account_manager');
     Route::get('profile', [DashboardController::class, 'showProfile'])->middleware('verified')->name('profile');
 

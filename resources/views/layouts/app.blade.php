@@ -495,6 +495,7 @@
         <script src="{{ asset('assets/js/nav-pills.js') }}"></script>
 
         <script src="{{ asset('assets/js/navbar-sticky.js') }}"></script>
+        <script src="{{ asset('assets/js/index.js') }}"></script>
         <!-- Custom JS for Transaction Dropdown Toggle -->
         <script>
             function toggleDropdown(dropdownId) {

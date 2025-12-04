@@ -10,22 +10,41 @@
                         <span
                             class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-to-tl from-zinc-800 to-zinc-700 dark:bg-gradient-to-tl dark:from-slate-750 dark:to-gray-850 opacity-80"></span>
                         <div class="relative z-10 flex-auto p-4">
-                            <i class="p-2 text-white fas fa-wifi"></i>
+                            {{-- <i class="p-2 text-white fas fa-wifi"></i> --}}
+                            <i class="fa-solid fa-sim-card fa-rotate-270 fa-2xl" style="color: #FFD43B;"></i>
                             <h5 class="pb-2 mt-6 mb-12 text-white">
-                                4562&nbsp;&nbsp;&nbsp;1122&nbsp;&nbsp;&nbsp;4594&nbsp;&nbsp;&nbsp;7852</h5>
+                                {{ $default_card->card_number }}
+                            </h5>
                             <div class="flex">
                                 <div class="flex">
                                     <div class="mr-6">
                                         <p class="mb-0 text-sm leading-normal text-white opacity-80">Card Holder</p>
-                                        <h6 class="mb-0 text-white">Jack Peterson</h6>
+                                        <h6 class="mb-0 text-white">{{ $default_card->card_name }}</h6>
                                     </div>
                                     <div>
                                         <p class="mb-0 text-sm leading-normal text-white opacity-80">Expires</p>
-                                        <h6 class="mb-0 text-white">11/22</h6>
+                                        <h6 class="mb-0 text-white">
+                                            {{ \Carbon\Carbon::parse($default_card->expiry_date)->format('m/y') }}</h6>
                                     </div>
                                 </div>
                                 <div class="flex items-end justify-end w-1/5 ml-auto">
-                                    <img class="w-3/5 mt-2" src="../assets/img/logos/mastercard.png" alt="logo" />
+                                    @if ($default_card->type === 'Mastercard')
+                                        <img class="w-3/5 mt-2" src="../assets/img/logos/mastercard.png" alt="logo" />
+                                    @endif
+                                    @if ($default_card->type === 'Visa')
+                                        <img class="w-3/5 mt-2" src="../assets/img/logos/visa2.png" alt="logo" />
+                                    @endif
+                                    @if ($default_card->type === 'Discover')
+                                        <img class="w-3/5 mt-2" src="../assets/img/logos/discover.png" alt="logo" />
+                                    @endif
+                                    @if ($default_card->type === 'Verve')
+                                        <img class="w-3/5 mt-2"src="../assets/img/logos/verve.png" alt="logo" />
+                                    @endif
+                                    @if ($default_card->type === 'American Express')
+                                        <img class="w-3/5 mt-2" src="../assets/img/logos/american_express.png"
+                                            alt="logo" />
+                                    @endif
+                                    {{-- <img class="w-3/5 mt-2" src="../assets/img/logos/mastercard.png" alt="logo" /> --}}
                                 </div>
                             </div>
                         </div>
@@ -87,29 +106,52 @@
                             </div>
                             <div class="flex-none w-1/2 max-w-full px-3 text-right">
                                 <a class="inline-block px-5 py-2.5 font-bold leading-normal text-center text-white align-middle transition-all bg-transparent rounded-lg cursor-pointer text-sm ease-in shadow-md bg-150 bg-gradient-to-tl from-zinc-800 to-zinc-700 dark:bg-gradient-to-tl dark:from-slate-750 dark:to-gray-850 hover:shadow-xs active:opacity-85 hover:-translate-y-px tracking-tight-rem bg-x-25"
-                                    href="{{ route('create.virtual_card') }}"> <i class="fas fa-plus"> </i>&nbsp;&nbsp;Add New Card</a>
+                                    href="{{ route('create.virtual_card') }}"> <i class="fas fa-plus"> </i>&nbsp;&nbsp;Add
+                                    New Card</a>
                             </div>
                         </div>
                     </div>
                     <div class="flex-auto p-4">
                         <div class="flex flex-wrap -mx-3">
-                            <div class="max-w-full px-3 mb-6 md:mb-0 md:w-1/2 md:flex-none">
-                                <div
-                                    class="relative flex flex-row items-center flex-auto min-w-0 p-6 break-words bg-transparent border border-solid shadow-none md-max:overflow-auto rounded-xl border-slate-100 dark:border-slate-700 bg-clip-border">
-                                    <img class="mb-0 mr-4 w-1/10" src="../assets/img/logos/mastercard.png" alt="logo" />
-                                    <h6 class="mb-0 dark:text-white">
-                                        ****&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;7852</h6>
-                                    <i class="ml-auto cursor-pointer fas fa-pencil-alt text-slate-700"
-                                        data-target="tooltip_trigger" data-placement="top"></i>
-                                    <div data-target="tooltip"
-                                        class="hidden px-2 py-1 text-sm text-white bg-black rounded-lg">
-                                        Edit Card
-                                        <div class="invisible absolute h-2 w-2 bg-inherit before:visible before:absolute before:h-2 before:w-2 before:rotate-45 before:bg-inherit before:content-['']"
-                                            data-popper-arrow></div>
+                            @foreach ($cards as $card)
+                                <div class="max-w-full px-3 mb-6 md:mb-0 md:w-1/2 md:flex-none">
+                                    <div
+                                        class="relative flex flex-row items-center flex-auto min-w-0 p-6 break-words bg-transparent border border-solid shadow-none md-max:overflow-auto rounded-xl border-slate-100 dark:border-slate-700 bg-clip-border">
+                                        @if ($card->type === 'Mastercard')
+                                            <img class="mb-0 mr-4 w-1/10" src="../assets/img/logos/mastercard.png"
+                                                alt="logo" />
+                                        @endif
+                                        @if ($card->type === 'Visa')
+                                            <img class="mb-0 mr-4 w-1/10" src="../assets/img/logos/visa2.png"
+                                                alt="logo" />
+                                        @endif
+                                        @if ($card->type === 'Discover')
+                                            <img class="mb-0 mr-4 w-1/10" src="../assets/img/logos/discover.png"
+                                                alt="logo" />
+                                        @endif
+                                        @if ($card->type === 'Verve')
+                                            <img class="mb-0 mr-4 w-1/10" src="../assets/img/logos/verve.png"
+                                                alt="logo" />
+                                        @endif
+                                        @if ($card->type === 'American Express')
+                                            <img class="mb-0 mr-4 w-1/10" src="../assets/img/logos/american_express.png"
+                                                alt="logo" />
+                                        @endif
+                                        <h6 class="mb-0 dark:text-white">
+                                            {{ $card->card_number }}</h6>
+                                        <i class="ml-auto cursor-pointer fas fa-pencil-alt text-slate-700"
+                                            data-target="tooltip_trigger" data-placement="top"></i>
+                                        <div data-target="tooltip"
+                                            class="hidden px-2 py-1 text-sm text-white bg-black rounded-lg">
+                                            Edit Card
+                                            <div class="invisible absolute h-2 w-2 bg-inherit before:visible before:absolute before:h-2 before:w-2 before:rotate-45 before:bg-inherit before:content-['']"
+                                                data-popper-arrow></div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="max-w-full px-3 md:w-1/2 md:flex-none">
+                            @endforeach
+
+                            {{-- <div class="max-w-full px-3 md:w-1/2 md:flex-none">
                                 <div
                                     class="relative flex flex-row items-center flex-auto min-w-0 p-6 break-words bg-transparent border border-solid shadow-none md-max:overflow-auto rounded-xl border-slate-100 dark:border-slate-700 bg-clip-border">
                                     <img class="mb-0 mr-4 w-1/10" src="../assets/img/logos/visa.png" alt="logo" />
@@ -124,7 +166,7 @@
                                             data-popper-arrow></div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

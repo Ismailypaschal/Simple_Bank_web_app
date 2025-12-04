@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rules\File;
 use App\Models\Deposit;
 use App\Models\Account;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Transaction;
 
 class DepositController extends Controller
@@ -28,7 +29,7 @@ class DepositController extends Controller
                 $filePath = $file->storeAs('PaymentProofs', $filename, 'public');
                 $requestData['deposit_proof'] = '/storage/' . $filePath;
             }
-            $user = auth()->user();
+            $user = Auth::user();
 
             $account = $user->accounts()->first();
             if (!$account) {

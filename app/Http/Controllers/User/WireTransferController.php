@@ -8,6 +8,7 @@ use App\Models\Transfer;
 use App\Models\Account;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 class WireTransferController extends Controller
 {
@@ -31,7 +32,7 @@ class WireTransferController extends Controller
             $transfer_type = 'domestic';
 
             // Account ID
-            $user = auth()->user();
+            $user = Auth::user();
             $account = $user->accounts()->first();
             if (!$account) {
                 throw new \Exception('No account found for user');
