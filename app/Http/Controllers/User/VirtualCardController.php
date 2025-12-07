@@ -27,6 +27,9 @@ class VirtualCardController extends Controller
             }
             $account_id = $account->id;
 
+            // Card cvv
+            $card_cvv = rand(120, 999);
+
             // Generate expiry date server-side: 2 years from now, as first day of the month (common for card expiry)
             $expiryDate = Carbon::now()->addYears(2)->startOfMonth()->format('Y-m-d');
 
@@ -43,6 +46,7 @@ class VirtualCardController extends Controller
                 'account_id' => $account_id,
                 'card_name' => $requestData['card_name'],
                 'card_number' => $requestData['card_number'],
+                'card_cvv' => $card_cvv,
                 'expiry_date' => $expiryDate,
                 'type' => $requestData['card_type'],
                 'default_card'=> $isDefault,

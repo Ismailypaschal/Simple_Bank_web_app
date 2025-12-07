@@ -25,6 +25,7 @@ class LoanFactory extends Factory
             'interest_rate' => fake()->randomFloat(2, 1, 15),
             'duration_months' => fake()->numberBetween(6, 60),
             'monthly_payment' => fake()->randomFloat(2, 100, 500),
+            'description' => fake()->sentence(),
             'status' => fake()->randomElement(['pending', 'approved', 'rejected', 'completed']),
             'created_at' => now(),
             'updated_at' => now(),

@@ -53,10 +53,12 @@ class DashboardController extends Controller
         $user = Auth::user();
         $cards = $user->cards()->latest()->take(2)->get();
         $default_card = $user->cards()->where('default_card', true)->first();
+        $option_card = $user->cards()->where('default_card', false)->latest()->first();
+        $total_card = $user->cards()->count();
         if (!$cards) {
             throw new Exception('No card found for user');
         }
-        return view('user.virtual_card', compact('cards', 'default_card'));
+        return view('user.virtual_card', compact('user', 'cards', 'default_card', 'option_card', 'total_card'));
     }
     public function showCreateVirtualTransfer()
     {
@@ -70,9 +72,9 @@ class DashboardController extends Controller
 
         return view('user.create_virtual_card', compact('user_name'));
     }
-    public function showAccountManager()
+    public function showCreditDebit()
     {
-        return view('user.account_manager');
+        return view('user.transactions.credit_debit');
     }
     public function showWithdrawal()
     {

@@ -97,10 +97,11 @@ return new class extends Migration
             $table->foreignIdFor(Account::class)->constrained()->cascadeOnDelete();
             $table->string('card_name');
             $table->string('card_number');
+            $table->string('card_cvv');
             $table->enum('type', ['Visa', 'Mastercard', 'Verve', 'American Express', 'Discover']);
             $table->date('expiry_date');
             $table->enum('status', ['active', 'blocked', 'pending', 'expired'])->default('active');
-            $table->boolean('default_card')->default(false); 
+            $table->boolean('default_card')->default(false);
             $table->timestamps();
         });
 
@@ -110,8 +111,9 @@ return new class extends Migration
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->decimal('amount', 15, 2);
             $table->decimal('interest_rate', 5, 2);
-            $table->integer('duration_months');
+            $table->string('duration_months');
             $table->decimal('monthly_payment', '15', '2');
+            $table->string('description');
             $table->enum('status', ['pending', 'approved', 'rejected', 'completed'])->default('pending');
             $table->timestamps();
         });
