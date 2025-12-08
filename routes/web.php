@@ -63,6 +63,9 @@ Route::prefix('user')->middleware('auth')->group(function () {
     Route::post('loan_mortgage', [LoanMortgageController::class, 'storeLoanMortgage'])->middleware('verified')->name('loan');
     // Transaction historys
     Route::get('credit_debit_transactions', [DashboardController::class, 'showCreditDebit'])->middleware('verified')->name('credit_debit');
+    Route::get('wire_transactions', [DashboardController::class, 'showWire'])->middleware('verified')->name('wire');
+    Route::get('domestic_transaction', [DashboardController::class, 'showDomestic'])->middleware('verified')->name('domestic');
+    Route::get('loan_transaction', [DashboardController::class, 'LoanData'])->middleware('verified')->name('loan_transaction');
     // Account Manager
     Route::get('account_manager', [DashboardController::class, 'showAccountManager'])->middleware('verified')->name('account_manager');
     Route::get('profile', [DashboardController::class, 'showProfile'])->middleware('verified')->name('profile');

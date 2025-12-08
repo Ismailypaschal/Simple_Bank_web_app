@@ -9,8 +9,11 @@ use Illuminate\Support\Facades\Auth;
 
 class CreditDebitController extends Controller
 {
-    public function creditDebit() {
+    public function creditDebit()
+    {
         $user = Auth::user();
-        $transaction = $user->transactions()->latest()->paginate(5); 
+        $transactions = $user->transactions()->latest()->paginate(5);
+
+        return redirect()->route('credit_debit', compact('transactions'));
     }
 }

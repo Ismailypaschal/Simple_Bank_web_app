@@ -66,6 +66,7 @@ return new class extends Migration
                 'interest',
                 'adjustment'
             ]);
+            $table->enum('status', ['pending', 'successful', 'failed'])->default('pending');
             $table->string('description')->nullable();
             $table->string('source_account')->nullable();
             $table->string('destination_account')->nullable();

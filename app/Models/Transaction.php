@@ -15,4 +15,7 @@ class Transaction extends Model
     {
         return $this->belongsTo(Account::class);
     }
+    public function transfers() {
+        return $this->belongsTo(Transaction::class);
+    }
 }

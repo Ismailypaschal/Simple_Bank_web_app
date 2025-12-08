@@ -38,97 +38,80 @@
                                 <th
                                     class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b shadow-none text-sm border-b-solid tracking-none whitespace-nowrap text-blue-500 opacity-20">
                                     AMOUNT</th>
+                                    <th
+                                    class="px-6 py-3 pl-2 font-bold text-center uppercase align-middle bg-transparent border-b shadow-none text-sm border-b-solid tracking-none whitespace-nowrap text-blue-500 opacity-20">
+                                    INTEREST RATE</th>
                                 <th
                                     class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b shadow-none text-sm border-b-solid tracking-none whitespace-nowrap text-blue-500 opacity-20">
-                                    REFERENCE ID</th>
+                                    MONTH DURATION</th>
                                 <th
                                     class="px-6 py-3 pl-2 font-bold text-center uppercase align-middle bg-transparent border-b shadow-none text-sm border-b-solid tracking-none whitespace-nowrap text-blue-500 opacity-20">
-                                    BANK NAME</th>
+                                    MONTHLY PAYMENT</th>
                                 <th
                                     class="px-6 py-3 pl-2 font-bold text-center uppercase align-middle bg-transparent border-b shadow-none text-sm border-b-solid tracking-none whitespace-nowrap text-blue-500 opacity-20">
-                                    ACCOUNT NAME</th>
-                                <th
-                                    class="px-6 py-3 pl-2 font-bold text-center uppercase align-middle bg-transparent border-b shadow-none text-sm border-b-solid tracking-none whitespace-nowrap text-blue-500 opacity-20">
-                                    ACCOUNT NUMBER </th>
-                                <th
-                                    class="px-6 py-3 pl-2 font-bold text-center uppercase align-middle bg-transparent border-b shadow-none text-sm border-b-solid tracking-none whitespace-nowrap text-blue-500 opacity-20">
-                                    ACCOUNT TYPE</th>
-                                <th
-                                    class="px-6 py-3 pl-2 font-bold text-center uppercase align-middle bg-transparent border-b shadow-none text-sm border-b-solid tracking-none whitespace-nowrap text-blue-500 opacity-20">
+                                    REASON FOR LOAN</th>
                                 <th
                                     class="px-6 py-3 pl-2 font-bold text-center uppercase align-middle bg-transparent border-b shadow-none text-sm border-b-solid tracking-none whitespace-nowrap text-blue-500 opacity-20">
                                     DATE</th>
                                 <th
                                     class="px-6 py-3 pl-2 font-bold text-center uppercase align-middle bg-transparent border-b shadow-none text-sm border-b-solid tracking-none whitespace-nowrap text-blue-500 opacity-20">
-                                    TRANSFER STATUS</th>
+                                    LOAN STATUS</th>
                             </tr>
                         </thead>
                         <tbody class="border-t">
-                            @foreach ($transfers as $transfer)
+                            @foreach ($loans as $loan)
                                 <tr style="padding-right: 10px">
                                     <td
                                         class="text-center bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
                                         <p
                                             class="mb-0 text-sm font-semibold leading-normal dark:text-white dark:opacity-60">
-                                            {{ $transfer->id }}</p>
+                                            {{ $loan->id }}</p>
                                     </td>
                                     <td
                                         class="text-center bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
                                         <p
                                             class="mb-0 text-sm font-semibold leading-normal dark:text-white dark:opacity-60">
-                                            ${{ $transfer->amount }}</p>
+                                            ${{ $loan->amount }}</p>
                                     </td>
                                     <td
                                         class="text-center bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
                                         <span
-                                            class="text-sm font-semibold leading-tight dark:text-white dark:opacity-60">{{ $transfer->reference }}</span>
+                                            class="text-sm font-semibold leading-tight dark:text-white dark:opacity-60">{{ $loan->interest_rate }}</span>
 
                                     </td>
                                     <td
                                         class="text-center bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
                                         <span
-                                            class="text-sm font-semibold leading-tight dark:text-white dark:opacity-60">{{ $transfer->bank_name }}</span>
+                                            class="text-sm font-semibold leading-tight dark:text-white dark:opacity-60">{{ $loan->month_duration }}</span>
 
                                     </td>
                                     <td
                                         class="text-center bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
                                         <span
-                                            class="text-sm font-semibold leading-tight dark:text-white dark:opacity-60">{{ $transfer->bene_account_name }}</span>
+                                            class="text-sm font-semibold leading-tight dark:text-white dark:opacity-60">{{ $loan->monthly_payment }}</span>
 
                                     </td>
                                     <td
                                         class="text-center bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
                                         <span
-                                            class="text-sm font-semibold leading-tight dark:text-white dark:opacity-60">{{ $transfer->bene_account_number }}</span>
+                                            class="text-sm font-semibold leading-tight dark:text-white dark:opacity-60">{{ $loan->description }}</span>
                                     </td>
                                     <td
                                         class="text-center bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
                                         <p
                                             class="mb-0 text-sm font-semibold leading-normal dark:text-white dark:opacity-60">
-                                            {{ $transfer->account_type }}</p>
+                                            {{ $loan->created_at->format('M d, Y g:i A') }}</p>
                                     </td>
                                     <td
                                         class="text-center bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
                                         <p
                                             class="mb-0 text-sm font-semibold leading-normal dark:text-white dark:opacity-60">
-                                            {{ $transfer->transfer_type }}</p>
-                                    </td>
-                                    <td
-                                        class="text-center bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                                        <p
-                                            class="mb-0 text-sm font-semibold leading-normal dark:text-white dark:opacity-60">
-                                            {{ $transfer->created_at->format('M d, Y g:i A') }}</p>
-                                    </td>
-                                    <td
-                                        class="text-center bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                                        <p
-                                            class="mb-0 text-sm font-semibold leading-normal dark:text-white dark:opacity-60">
-                                            {{ $transfer->status }}</p>
+                                            {{ $loan->status }}</p>
                                     </td>
                                 </tr>
                             @endforeach
-                            @if ($transfers->isEmpty())
-                                <p class="text-gray-500 text-center h-full">No Domestic Transaction record found.</p>
+                            @if ($loans->isEmpty())
+                                <p class="text-gray-500 text-center h-full">No Loan Transaction record found.</p>
                             @endif
                         </tbody>
                     </table>

@@ -14,7 +14,8 @@
                 @csrf
                 {{-- flash messages --}}
                 @if (session('success'))
-                    <div class="mb-4 p-3 bg-green-100 text-green-500 rounded-lg text-center">{{ session('success') }}
+                    <div class="mb-4 p-3 bg-green-100 text-green-500 rounded-lg text-center">
+                        {{ session('success') }}
                     </div>
                 @endif
                 @if (session('error'))

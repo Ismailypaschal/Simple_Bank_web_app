@@ -29,7 +29,7 @@ class WireTransferController extends Controller
                 'description' => ['required', 'max:100'],
             ]);
             $reference = 'WT_' . substr(rand(0, time()), 0, 7);
-            $transfer_type = 'domestic';
+            $transfer_type = 'wire';
 
             // Account ID
             $user = Auth::user();

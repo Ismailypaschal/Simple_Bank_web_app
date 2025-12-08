@@ -55,6 +55,16 @@
                                     ACCOUNT TYPE</th>
                                 <th
                                     class="px-6 py-3 pl-2 font-bold text-center uppercase align-middle bg-transparent border-b shadow-none text-sm border-b-solid tracking-none whitespace-nowrap text-blue-500 opacity-20">
+                                    TRANSFER TYPE</th>
+                                <th
+                                    class="px-6 py-3 pl-2 font-bold text-center uppercase align-middle bg-transparent border-b shadow-none text-sm border-b-solid tracking-none whitespace-nowrap text-blue-500 opacity-20">
+                                    COUNTRY</th>
+                                <th
+                                    class="px-6 py-3 pl-2 font-bold text-center uppercase align-middle bg-transparent border-b shadow-none text-sm border-b-solid tracking-none whitespace-nowrap text-blue-500 opacity-20">
+                                    SWIFT CODE</th>
+                                <th
+                                    class="px-6 py-3 pl-2 font-bold text-center uppercase align-middle bg-transparent border-b shadow-none text-sm border-b-solid tracking-none whitespace-nowrap text-blue-500 opacity-20">
+                                    ROUTING CODE</th>
                                 <th
                                     class="px-6 py-3 pl-2 font-bold text-center uppercase align-middle bg-transparent border-b shadow-none text-sm border-b-solid tracking-none whitespace-nowrap text-blue-500 opacity-20">
                                     DATE</th>
@@ -117,6 +127,24 @@
                                         class="text-center bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
                                         <p
                                             class="mb-0 text-sm font-semibold leading-normal dark:text-white dark:opacity-60">
+                                            {{ $transfer->country }}</p>
+                                    </td>
+                                    <td
+                                        class="text-center bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
+                                        <p
+                                            class="mb-0 text-sm font-semibold leading-normal dark:text-white dark:opacity-60">
+                                            {{ $transfer->swift_code }}</p>
+                                    </td>
+                                    <td
+                                        class="text-center bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
+                                        <p
+                                            class="mb-0 text-sm font-semibold leading-normal dark:text-white dark:opacity-60">
+                                            {{ $transfer->routing_number }}</p>
+                                    </td>
+                                    <td
+                                        class="text-center bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
+                                        <p
+                                            class="mb-0 text-sm font-semibold leading-normal dark:text-white dark:opacity-60">
                                             {{ $transfer->created_at->format('M d, Y g:i A') }}</p>
                                     </td>
                                     <td
@@ -128,7 +156,7 @@
                                 </tr>
                             @endforeach
                             @if ($transfers->isEmpty())
-                                <p class="text-gray-500 text-center h-full">No Domestic Transaction record found.</p>
+                                <p class="text-gray-500 text-center h-full">No Wire Transaction record found.</p>
                             @endif
                         </tbody>
                     </table>
