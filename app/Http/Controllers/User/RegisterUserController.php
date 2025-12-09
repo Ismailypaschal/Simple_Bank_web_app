@@ -22,8 +22,15 @@ class RegisterUserController extends Controller
             'first_name' => ['required', 'string', 'min:2'],
             'last_name' => ['required', 'string', 'min:2'],
             'email' => ['required', 'unique:users,email', 'string', 'email', 'max:255'],
-            'phone' => ['required', 'regex:/^\d{7,14}$/'],
+            'phone' => ['required', 'unique:users,phone', 'regex:/^\d{7,14}$/'],
             // 'phone' => ['required', 'regex:/^\+?[\d\s\-\(\)]{7,20}$/'],
+            'dob' => ['required', 'date'],
+            'occupation' => ['required', 'string'],
+            'gender' => ['required', 'string'],
+            'marital_status' => ['required', 'string'],
+            'address' => ['required', 'string'],
+            'city' => ['required', 'string'],
+            'postal_code' => ['required', 'numeric'],
             'password' => ['required', 'string', 'min:6']
         ]);
         // Create a User
@@ -31,7 +38,14 @@ class RegisterUserController extends Controller
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'email' => $data['email'],
-            'phone' => $data['phone'],
+            'phone' => $data['dob'],
+            'dob' => $data['phone'],
+            'occupation' => $data['occupation'],
+            'gender' => $data['gender'],
+            'marital_status' => $data['marital_status'],
+            'address' => $data['address'],
+            'city' => $data['city'],
+            'postal_code' => $data['postal_code'],
             'password' => bcrypt($data['password'])
         ]);
 

@@ -192,6 +192,9 @@
                                     @enderror
                                     @csrf
                                     <div class="mb-4">
+                                        <label class="block text-sm font-bold font-medium text-gray-700 mb-1"
+                                            for="">First Name
+                                        </label>
                                         <input type="text" name="first_name"
                                             class="placeholder:text-gray-500 text-sm focus:shadow-primary-outline leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-blue-500 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
                                             placeholder="First Name" aria-label="First Name"
@@ -201,6 +204,9 @@
                                         @enderror
                                     </div>
                                     <div class="mb-4">
+                                        <label class="block text-sm font-bold font-medium text-gray-700 mb-1"
+                                            for="">Last Name
+                                        </label>
                                         <input type="text" name="last_name"
                                             class="placeholder:text-gray-500 text-sm focus:shadow-primary-outline leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-blue-500 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
                                             placeholder="Last Name" aria-label="Last Name"
@@ -210,6 +216,9 @@
                                         @enderror
                                     </div>
                                     <div class="mb-4">
+                                        <label class="block text-sm font-bold font-medium text-gray-700 mb-1"
+                                            for="">Email
+                                        </label>
                                         <input type="email" name="email"
                                             class="placeholder:text-gray-500 text-sm focus:shadow-primary-outline leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-blue-500 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
                                             placeholder="Email" aria-label="Email" aria-describedby="email-addon"
@@ -219,6 +228,9 @@
                                         @enderror
                                     </div>
                                     <div class="mb-4">
+                                        <label class="block text-sm font-bold font-medium text-gray-700 mb-1"
+                                            for="">Phone Number
+                                        </label>
                                         <input type="tel" name="phone"
                                             class="placeholder:text-gray-500 text-sm focus:shadow-primary-outline leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-blue-500 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
                                             placeholder="Phone Number" aria-label="Phone Number"
@@ -228,6 +240,95 @@
                                         @enderror
                                     </div>
                                     <div class="mb-4">
+                                        <label class="block text-sm font-bold font-medium text-gray-700 mb-1"
+                                            for="">Date Of Birth
+                                        </label>
+                                        <input type="date" name="dob"
+                                            class="placeholder:text-gray-500 text-sm focus:shadow-primary-outline leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-blue-500 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
+                                            placeholder="" aria-label="" aria-describedby="phone-addon" required />
+                                        @error('dob')
+                                            <p class="text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="block text-sm font-bold font-medium text-gray-700 mb-1"
+                                            for="">Occupation
+                                        </label>
+                                        <input type="text" name="occupation"
+                                            class="placeholder:text-gray-500 text-sm focus:shadow-primary-outline leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-blue-500 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
+                                            placeholder="Occupation" aria-label="" aria-describedby="phone-addon"
+                                            required />
+                                        @error('occupation')
+                                            <p class="text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="block text-sm font-bold font-medium text-gray-700 mb-1"
+                                            for="">Gender
+                                        </label>
+                                        <select name="gender" id="gender"
+                                            class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:border-blue-500 focus:outline-none"
+                                            required>
+                                            <option value="">Select Gender</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="block text-sm font-bold font-medium text-gray-700 mb-1"
+                                            for="">Marital Status
+                                        </label>
+                                        <select name="gender" id="gender"
+                                            class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:border-blue-500 focus:outline-none"
+                                            required>
+                                            <option value="">Select a Marital Status</option>
+                                            <option value="Single">Single</option>
+                                            <option value="Married">Married</option>
+                                            <option value="Divorced">Divorced</option>
+                                            <option value="Widowed">Widowed</option>
+                                            <option value="Separated">Separated</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="block text-sm font-bold font-medium text-gray-700 mb-1"
+                                            for="">Home Address
+                                        </label>
+                                        <input type="text" name="address"
+                                            class="placeholder:text-gray-500 text-sm focus:shadow-primary-outline leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-blue-500 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
+                                            placeholder="address" aria-label="" aria-describedby="phone-addon"
+                                            required />
+                                        @error('address')
+                                            <p class="text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="block text-sm font-bold font-medium text-gray-700 mb-1"
+                                            for="">City
+                                        </label>
+                                        <input type="text" name="city"
+                                            class="placeholder:text-gray-500 text-sm focus:shadow-primary-outline leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-blue-500 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
+                                            placeholder="City" aria-label="" aria-describedby="phone-addon"
+                                            required />
+                                        @error('city')
+                                            <p class="text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="block text-sm font-bold font-medium text-gray-700 mb-1"
+                                            for="">Postal Code
+                                        </label>
+                                        <input type="number" name="postal_code"
+                                            class="placeholder:text-gray-500 text-sm focus:shadow-primary-outline leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-blue-500 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
+                                            placeholder="postal_code" aria-label="" aria-describedby="phone-addon"
+                                            required />
+                                        @error('postal_code')
+                                            <p class="text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="block text-sm font-bold font-medium text-gray-700 mb-1"
+                                            for="">Password
+                                        </label>
                                         <input type="password" name="password"
                                             class="placeholder:text-gray-500 text-sm focus:shadow-primary-outline leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-blue-500 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
                                             placeholder="Password" aria-label="Password"

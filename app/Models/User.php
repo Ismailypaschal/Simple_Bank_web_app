@@ -22,6 +22,13 @@ class User extends Authenticatable implements MustVerifyEmail
         'last_name',
         'email',
         'phone',
+        'dob',
+        'occupation',
+        'gender',
+        'marital_status',
+        'address',
+        'city',
+        'postal_code',
         'password',
     ];
 
@@ -51,10 +58,12 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Account::class);
     }
-    public function deposits() {
+    public function deposits()
+    {
         return $this->hasManyThrough(Deposit::class, Account::class);
     }
-    public function withdraws() {
+    public function withdraws()
+    {
         return $this->hasManyThrough(Withdraw::class, Account::class);
     }
     public function transactions()
@@ -69,10 +78,12 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasManyThrough(Card::class, Account::class);
     }
-    public function loans() {
+    public function loans()
+    {
         return $this->hasMany(Loan::class);
     }
-    public function loanpayments() {
+    public function loanpayments()
+    {
         return $this->hasMany(LoanPayment::class);
     }
 }

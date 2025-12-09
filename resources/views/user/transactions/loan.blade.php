@@ -82,13 +82,13 @@
                                     <td
                                         class="text-center bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
                                         <span
-                                            class="text-sm font-semibold leading-tight dark:text-white dark:opacity-60">{{ $loan->month_duration }}</span>
+                                            class="text-sm font-semibold leading-tight dark:text-white dark:opacity-60">{{ $loan->duration_months }} months</span>
 
                                     </td>
                                     <td
                                         class="text-center bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
                                         <span
-                                            class="text-sm font-semibold leading-tight dark:text-white dark:opacity-60">{{ $loan->monthly_payment }}</span>
+                                            class="text-sm font-semibold leading-tight dark:text-white dark:opacity-60">${{ $loan->monthly_payment }}</span>
 
                                     </td>
                                     <td
@@ -100,7 +100,7 @@
                                         class="text-center bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
                                         <p
                                             class="mb-0 text-sm font-semibold leading-normal dark:text-white dark:opacity-60">
-                                            {{ $loan->created_at->format('M d, Y g:i A') }}</p>
+                                            {{ $loan->created_at->format('M d, Y') }}</p>
                                     </td>
                                     <td
                                         class="text-center bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">

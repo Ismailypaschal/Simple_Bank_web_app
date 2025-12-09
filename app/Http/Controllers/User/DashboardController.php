@@ -97,7 +97,9 @@ class DashboardController extends Controller
         return view ('user.transactions.loan', compact('loans'));
     }
     public function showProfile()
-    {
+    {   
+        $user = Auth::user();
+        $user_info = $user->first();
         return view('user.profile');
     }
 }
