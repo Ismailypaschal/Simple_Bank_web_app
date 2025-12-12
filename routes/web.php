@@ -11,6 +11,7 @@ use App\Http\Controllers\User\LoanMortgageController;
 use App\Http\Controllers\User\SendEmailVerificationNotificationController;
 use App\Http\Controllers\User\ForgottenPasswordController;
 use App\Http\Controllers\User\ResetPasswordController;
+use App\Http\Controllers\User\UpdateProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -22,6 +23,9 @@ Route::prefix('user')->group(function () {
     Route::post('signup', [RegisterUserController::class, 'storeSignup'])->name('store.signup');
     Route::get('signin', [SessionUserController::class, 'showSignin'])->name('login');
     Route::post('signin', [SessionUserController::class, 'storeSignin'])->name('store.signin');
+    // Store Pin
+    Route::get('security_pin', [SessionUserController::class, 'showSecurityPin'])->name('show.security_pin');
+    Route::post('security_pin', [SessionUserController::class, 'storePin'])->name('store.pin');
     // Forgot password routes
     Route::get('forgot-password', [ForgottenPasswordController::class, 'showForm'])->name('password.request');
     Route::post('forgot-password', [ForgottenPasswordController::class, 'sendResetLink'])->middleware('throttle:6,1')->name('password.email');
@@ -68,7 +72,9 @@ Route::prefix('user')->middleware('auth')->group(function () {
     Route::get('loan_transaction', [DashboardController::class, 'LoanData'])->middleware('verified')->name('loan_transaction');
     // Account Manager
     Route::get('account_manager', [DashboardController::class, 'showAccountManager'])->middleware('verified')->name('account_manager');
+    // Profile
     Route::get('profile', [DashboardController::class, 'showProfile'])->middleware('verified')->name('profile');
+    Route::post('profile', [UpdateProfileController::class, 'updatePassword'])->middleware('verified')->name('update.password');
 
     Route::post('logout', [SessionUserController::class, 'destroy'])->name('user.logout');
 });

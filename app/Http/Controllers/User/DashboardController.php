@@ -80,26 +80,26 @@ class DashboardController extends Controller
         return view('user.transactions.credit_debit', compact('transactions'));
     }
     public function showWire()
-    {   
+    {
         $user = Auth::user();
         $transfers = $user->transfers()->where('transfer_type', 'wire')->latest()->paginate(5);
         return view('user.transactions.wire', compact('transfers'));
     }
     public function showDomestic()
-    {   
+    {
         $user = Auth::user();
         $transfers = $user->transfers()->where('transfer_type', 'domestic')->latest()->paginate(5);
         return view('user.transactions.domestic', compact('transfers'));
     }
-    public function LoanData() {
+    public function LoanData()
+    {
         $user = Auth::user();
         $loans = $user->loans()->latest()->paginate(5);
-        return view ('user.transactions.loan', compact('loans'));
+        return view('user.transactions.loan', compact('loans'));
     }
     public function showProfile()
-    {   
+    {
         $user = Auth::user();
-        $user_info = $user->first();
-        return view('user.profile');
+        return view('user.profile', compact('user'));
     }
 }

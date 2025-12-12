@@ -33,12 +33,15 @@ class SessionUserController extends Controller
             ])->onlyInput('email');
         }
     }
-     public function destroy(Request $request)
+    public function showSecurityPin()
+    {
+        return view('user.enter_pin');
+    }
+    public function destroy(Request $request)
     {
         Auth::logout();
         // request()->session()->invalidate();
         // request()->session()->regenerateToken();
         return redirect()->route('login');
     }
-    
 }

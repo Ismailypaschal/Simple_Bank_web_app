@@ -21,9 +21,11 @@ return new class extends Migration
             $table->string('occupation');
             $table->string('gender');
             $table->string('marital_status');
+            $table->string('country');
             $table->string('address');
             $table->string('city');
             $table->string('postal_code');
+            $table->string('profile_photo')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

@@ -137,3 +137,4 @@ amount.addEventListener('input', loanCalculation);
 // Call on page load to set initial state
 document.addEventListener('DOMContentLoaded',
     loanCalculation);
+

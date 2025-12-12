@@ -26,8 +26,10 @@ class User extends Authenticatable implements MustVerifyEmail
         'occupation',
         'gender',
         'marital_status',
+        'country',
         'address',
         'city',
+        'profile_photo',
         'postal_code',
         'password',
     ];
@@ -56,7 +58,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
     public function accounts()
     {
-        return $this->hasMany(Account::class);
+        return $this->hasOne(Account::class);
     }
     public function deposits()
     {

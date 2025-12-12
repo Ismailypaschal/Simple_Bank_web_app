@@ -12,6 +12,8 @@
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/620fafa260.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
     <!-- Nucleo Icons -->
     <link href="{{ asset('assets/css/nucleo-icons.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/css/nucleo-svg.css') }}" rel="stylesheet" />
@@ -521,6 +523,9 @@
         </footer>
 
         <!-- javascript Start -->
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+
         <!-- plugin for charts  -->
         <script src="{{ asset('assets/js/plugins/Chart.extension.js') }}" async></script>
         <script src="{{ asset('assets/js/plugins/chartjs.min.js') }}" async></script>
@@ -564,6 +569,24 @@
                     chevron.style.transform = 'rotate(0deg)';
                 }
             }
+        </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                fetch("https://ipapi.co/json/")
+                    .then(res => res.json())
+                    .then(data => {
+                        const countryCode = data.country_code?.toLowerCase() || "us";
+
+                        const input = document.querySelector("#phone");
+                        if (!input) return;
+
+                        window.intlTelInput(input, {
+                            initialCountry: countryCode,
+                            preferredCountries: [countryCode],
+                            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
+                        });
+                    });
+            });
         </script>
         <!-- javascript End -->
 </body>
