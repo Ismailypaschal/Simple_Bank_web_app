@@ -39,6 +39,7 @@ class UserFactory extends Factory
             'profile_photo' => fake()->imageUrl(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
+            'security_pin' => Hash::make('1234'),
             'remember_token' => Str::random(10),
         ];
     }

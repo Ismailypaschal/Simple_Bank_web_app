@@ -588,6 +588,46 @@
                     });
             });
         </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+
+                // Photo preview
+                const photoInput = document.getElementById('photoInput');
+                const previewImage = document.getElementById('previewImage');
+
+                if (photoInput && previewImage) {
+                    photoInput.addEventListener('change', function(event) {
+                        const file = event.target.files[0];
+                        if (file) {
+                            previewImage.src = URL.createObjectURL(file);
+                        }
+                    });
+                }
+
+                // Handle submit buttons instead of form IDs
+                const buttons = document.querySelectorAll('button.deactivate-on-submit');
+
+                buttons.forEach(button => {
+                    button.addEventListener('click', function(event) {
+                        event.preventDefault(); // ✅ stop default reload
+
+                        const form = button.closest('form');
+                        if (!form) return;
+
+                        // Disable button
+                        button.disabled = true;
+                        const originalText = button.textContent;
+                        button.textContent = originalText.includes('Change') ?
+                            'Processing...' :
+                            'Saving...';
+
+                        // ✅ submit form manually (NO AJAX)
+                        form.submit();
+                    });
+                });
+
+            });
+        </script>
         <!-- javascript End -->
 </body>
 

@@ -26,22 +26,23 @@ class SessionUserController extends Controller
                     'email' => 'Sorry, incorrect email or password'
                 ]);
             }
-            return redirect()->route('user.dashboard');
+            // $request->session()->regenerate();
+            return redirect()->route('pin.verify');
         } catch (ValidationException $e) {
             return back()->withErrors([
                 'email' => 'The provided credentials do not match our records.',
             ])->onlyInput('email');
         }
     }
-    public function showSecurityPin()
-    {
-        return view('user.enter_pin');
-    }
     public function destroy(Request $request)
     {
         Auth::logout();
-        // request()->session()->invalidate();
-        // request()->session()->regenerateToken();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+
+        // 🔐 Clear PIN verification
+        $request->session()->forget('pin_verified');
+
         return redirect()->route('login');
     }
 }

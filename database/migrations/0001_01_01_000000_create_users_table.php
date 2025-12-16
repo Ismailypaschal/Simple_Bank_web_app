@@ -25,9 +25,11 @@ return new class extends Migration
             $table->string('address');
             $table->string('city');
             $table->string('postal_code');
-            $table->string('profile_photo')->nullable();
+            $table->string('profile_photo', 255)->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password', 255);
+            $table->string('security_pin', 255)->nullable();
+
             $table->rememberToken();
             $table->timestamps();
         });

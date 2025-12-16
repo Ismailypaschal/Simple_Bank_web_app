@@ -8,8 +8,9 @@
                     <div class="border-black/12.5 rounded-t-2xl border-b-0 border-solid p-6 pb-0">
                         <div class="flex items-center">
                             <p class="mb-0 dark:text-white/80 font-bold">Edit Profile</p>
-                            <button type="button"
-                                class="inline-block px-8 py-2 mb-4 ml-auto font-bold leading-normal text-center text-white align-middle transition-all ease-in bg-blue-500 border-0 rounded-lg shadow-md cursor-pointer text-xs tracking-tight-rem hover:shadow-xs hover:-translate-y-px active:opacity-85">Settings</button>
+                            <p type="button"
+                                class="inline-block px-8 py-2 mb-4 ml-auto font-bold leading-normal text-center text-white align-middle transition-all ease-in bg-blue-500 border-0 rounded-lg shadow-md text-xs tracking-tight-rem hover:shadow-xs hover:-translate-y-px active:opacity-85">
+                                Settings</p>
                         </div>
                         @if (session('success'))
                             <div class="mb-4 p-3 bg-green-100 text-green-500 rounded-lg text-center"
@@ -162,7 +163,8 @@
                 <div
                     class="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
                     {{-- Upload Profile Picture --}}
-                    <form method="POST" action="" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('update.profile') }}" enctype="multipart/form-data"
+                        id="photo-form">
                         @csrf
                         <img class="w-full rounded-t-2xl" src="../assets/img/bg-profile.jpg" alt="profile cover image">
                         <div class="flex flex-wrap justify-center -mx-3">
@@ -188,7 +190,7 @@
                         <div class="border-black/12.5 rounded-t-2xl p-6 text-center pt-0 pb-6 lg:pt-2 lg:pb-4">
                             <p class="text-blue-500 mx-auto font-bold">Upload Picture</p>
                             <button type="submit"
-                                class="mx-auto px-8 py-2 font-bold text-white bg-blue-500 rounded-lg shadow-md hover:bg-blue-600">
+                                class="mx-auto px-8 py-2 font-bold text-white bg-blue-500 rounded-lg shadow-md hover:bg-blue-600 deactivate-on-submit">
                                 Save
                             </button>
                         </div>
@@ -225,7 +227,7 @@
                         <div class="flex-auto p-6">
                             <p class="leading-normal uppercase font-bold dark:text-white dark:opacity-60 text-sm">Change
                                 Password</p>
-                            <form method="POST" action="{{ route('update.password') }}">
+                            <form method="POST" action="{{ route('update.password') }}" id="password-form">
                                 @csrf
                                 <div class="mx-3">
                                     <div class="w-full max-w-full px-3 shrink-0 md:flex-0">
@@ -268,7 +270,7 @@
                                         </div>
                                     </div>
                                     <button type="submit"
-                                        class="w-1/2 mx-4 mt-4 block text-sm bg-blue-500 text-white py-2 rounded-lg font-semibold hover:bg-blue-800">
+                                        class="w-1/2 mx-4 mt-4 block text-sm bg-blue-500 text-white py-2 rounded-lg font-semibold hover:bg-blue-800 deactivate-on-submit">
                                         Change Password
                                     </button>
                                 </div>
@@ -283,7 +285,7 @@
                         <div class="flex-auto p-6">
                             <p class="leading-normal uppercase font-bold dark:text-white dark:opacity-60 text-sm">Change
                                 Pin</p>
-                            <form method="POST" action="">
+                            <form method="POST" action="{{ route('update.pin') }}" id="pin-form">
                                 @csrf
                                 <div class="mx-3">
                                     <div class="w-full max-w-full px-3 shrink-0 md:flex-0">
@@ -316,7 +318,7 @@
                                         </div>
                                     </div>
                                     <button type="submit"
-                                        class="w-1/2 mx-4 mt-4 block bg-blue-500 text-white py-2 rounded-lg font-semibold hover:bg-blue-800">
+                                        class="w-1/2 mx-4 mt-4 block bg-blue-500 text-white py-2 rounded-lg font-semibold hover:bg-blue-800 deactivate-on-submit">
                                         Change Pin
                                     </button>
                                 </div>

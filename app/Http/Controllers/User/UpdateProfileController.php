@@ -38,22 +38,32 @@ class UpdateProfileController extends Controller
     {
         try {
             $data = $request->validate([
-                'profile_photo' => ['required', 'max:255', File::types(['png', 'jpg', 'svg', 'webp'])->max(2048)]
+                'profile_photo' => ['required', File::types(['png', 'jpg', 'svg', 'webp'])->max(2048)]
             ]);
-            if (request()->hasFile('profile_photo')) {
-                $file = request()->file('profile_photo');
+            if ($request->hasFile('profile_photo')) {
+                $file = $request->file('profile_photo');
                 $filename = time() . '_' . $file->getClientOriginalName();
                 $filePath = $file->storeAs('photos', $filename, 'public');
                 $data['profile_photo'] = '/storage/' . $filePath;
             }
             $user = Auth::user();
             $user_id = $user->id;
-            User::where('id', $user_id)->update([
-                'profile_photo' => $data['profile_photo']
-            ]);
+            if (isset($data['profile_photo'])) {
+                User::where('id', $user_id)->update([
+                    'profile_photo' => $data['profile_photo']
+                ]);
+            }
         } catch (Exception $e) {
             return back()->with('error', 'There was an error updating profile photo: ' . $e->getMessage());
         }
         return redirect()->route('profile')->with('success', 'Your profile photo has been update!');
+    }
+    public function updatePin(Request $request) {
+        $data = $request->validate([
+            'number1' => ['required'],
+            'number2' => ['required'],
+            'number3' => ['required'],
+            'number4' => ['required'],
+        ]);
     }
 }

@@ -62,10 +62,11 @@ class RegisterUserController extends Controller
         // Send verification email
         $user->sendEmailVerificationNotification();
 
+        // Log the user in so they can access the email verification notice
+        // (the verification routes are protected by the `auth` middleware)
+        Auth::login($user);
+
         // Redirect to verify notice page
         return redirect()->route('verification.notice');
-
-        // Auth::login($user);
-        // return redirect()->route('user.dashboard');
     }
 }
