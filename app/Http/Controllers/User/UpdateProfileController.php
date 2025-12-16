@@ -58,12 +58,29 @@ class UpdateProfileController extends Controller
         }
         return redirect()->route('profile')->with('success', 'Your profile photo has been update!');
     }
-    public function updatePin(Request $request) {
-        $data = $request->validate([
-            'number1' => ['required'],
-            'number2' => ['required'],
-            'number3' => ['required'],
-            'number4' => ['required'],
-        ]);
+    public function updatePin(Request $request)
+    {
+        try {
+            $data = $request->validate([
+                'old_pin' => ['required'],
+                'security_pin' => ['required'],
+                'confirm_pin' => ['required']
+            ]);
+            $user = Auth::user();
+            $user_id = $user->id;
+            $user_oldPIn = $user->security_pin;
+            if (!Hash::check($data['old_pin'], $user_oldPIn)) {
+                return back()->withErrors(['old_pin' => 'Old PIN is incorrect!']);
+            }
+            if ($data['security_pin'] !== $data['confirm_pin']) {
+                return back()->withErrors(['confirm_pin' => 'New PIN and Confirm PIN do not match!']);
+            }
+            $user->update([
+                'security_pin' => Hash::make($data['security_pin']),
+            ]);
+            return redirect()->route('profile')->with('success', 'Your security PIN has been updated!');
+        } catch (Exception $e) {
+            return back()->with('error', 'There was an error updating security PIN: ' . $e->getMessage());
+        }
     }
 }
