@@ -77,7 +77,8 @@ Route::prefix('user')->middleware('auth')->group(function () {
     Route::get('account_manager', [DashboardController::class, 'showAccountManager'])->middleware('verified')->name('account_manager');
     // Profile
     Route::get('profile', [DashboardController::class, 'showProfile'])->middleware('verified')->name('profile');
-    Route::post('update_profile', [UpdateProfileController::class, 'updateProfilePhoto'])->middleware('verified')->name('update.profile');
+    Route::get('edit_profile', [DashboardController::class, 'showEditProfile'])->middleware('verified')->name('edit.profile');
+    Route::post('edit_profile', [UpdateProfileController::class, 'updateProfilePhoto'])->middleware('verified')->name('update.profile');
     Route::post('update_password', [UpdateProfileController::class, 'updatePassword'])->middleware('verified')->name('update.password');
     Route::post('update_pin', [UpdateProfileController::class, 'updatePin'])->middleware('verified')->name('update.pin');
 

@@ -97,6 +97,11 @@ class DashboardController extends Controller
         $loans = $user->loans()->latest()->paginate(5);
         return view('user.transactions.loan', compact('loans'));
     }
+    public function showEditProfile()
+    {
+        $user = Auth::user();
+        return view('user.edit_profile', compact('user'));
+    }
     public function showProfile()
     {
         $user = Auth::user();

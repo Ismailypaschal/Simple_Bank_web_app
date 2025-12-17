@@ -32,7 +32,7 @@ class UpdateProfileController extends Controller
             return back()->with('error', 'There was an error updating password: ' . $e->getMessage());
         }
 
-        return redirect()->route('profile')->with('success', 'Your Password has been update!');
+        return redirect()->route('edit.profile')->with('success', 'Your Password has been update!');
     }
     public function updateProfilePhoto(Request $request)
     {
@@ -56,7 +56,7 @@ class UpdateProfileController extends Controller
         } catch (Exception $e) {
             return back()->with('error', 'There was an error updating profile photo: ' . $e->getMessage());
         }
-        return redirect()->route('profile')->with('success', 'Your profile photo has been update!');
+        return redirect()->route('edit.profile')->with('success', 'Your profile photo has been update!');
     }
     public function updatePin(Request $request)
     {
@@ -78,7 +78,7 @@ class UpdateProfileController extends Controller
             $user->update([
                 'security_pin' => Hash::make($data['security_pin']),
             ]);
-            return redirect()->route('profile')->with('success', 'Your security PIN has been updated!');
+            return redirect()->route('edit.profile')->with('success', 'Your security PIN has been updated!');
         } catch (Exception $e) {
             return back()->with('error', 'There was an error updating security PIN: ' . $e->getMessage());
         }
