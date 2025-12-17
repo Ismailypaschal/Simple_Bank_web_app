@@ -64,48 +64,48 @@
                             </tr>
                         </thead>
                         <tbody class="border-t">
-                            @foreach ($transfers as $transfer)
+                            @foreach ($transactions as $transaction)
                                 <tr style="padding-right: 10px">
                                     <td
                                         class="text-center bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
                                         <p
                                             class="mb-0 text-sm font-semibold leading-normal dark:text-white dark:opacity-60">
-                                            {{ $transfer->id }}</p>
+                                            {{ $transaction->id }}</p>
                                     </td>
                                     <td
                                         class="text-center bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
                                         <p
                                             class="mb-0 text-sm font-semibold leading-normal dark:text-white dark:opacity-60">
-                                            ${{ $transfer->amount }}</p>
+                                            ${{ $transaction->amount }}</p>
                                     </td>
                                     <td
                                         class="text-center bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
                                         <span
-                                            class="text-sm font-semibold leading-tight dark:text-white dark:opacity-60">{{ $transfer->reference }}</span>
+                                            class="text-sm font-semibold leading-tight dark:text-white dark:opacity-60">{{ $transaction->reference }}</span>
 
                                     </td>
                                     <td
                                         class="text-center bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
                                         <span
-                                            class="text-sm font-semibold leading-tight dark:text-white dark:opacity-60">{{ $transfer->bank_name }}</span>
+                                            class="text-sm font-semibold leading-tight dark:text-white dark:opacity-60">{{ $transaction->bank_name }}</span>
 
                                     </td>
                                     <td
                                         class="text-center bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
                                         <span
-                                            class="text-sm font-semibold leading-tight dark:text-white dark:opacity-60">{{ $transfer->bene_account_name }}</span>
+                                            class="text-sm font-semibold leading-tight dark:text-white dark:opacity-60">{{ $transaction->bene_account_name }}</span>
 
                                     </td>
                                     <td
                                         class="text-center bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
                                         <span
-                                            class="text-sm font-semibold leading-tight dark:text-white dark:opacity-60">{{ $transfer->bene_account_number }}</span>
+                                            class="text-sm font-semibold leading-tight dark:text-white dark:opacity-60">{{ $transaction->bene_account_number }}</span>
                                     </td>
                                     <td
                                         class="text-center bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
                                         <p
                                             class="mb-0 text-sm font-semibold leading-normal dark:text-white dark:opacity-60">
-                                            {{ $transfer->account_type }}</p>
+                                            {{ $transaction->account_type }}</p>
                                     </td>
                                     <td
                                         class="text-center bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
@@ -123,12 +123,12 @@
                                         class="text-center bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
                                         <p
                                             class="mb-0 text-sm font-semibold leading-normal dark:text-white dark:opacity-60">
-                                            {{ $transfer->status }}</p>
+                                            {{ $transaction->status }}</p>
                                     </td>
                                 </tr>
                             @endforeach
-                            @if ($transfers->isEmpty())
-                                <p class="text-gray-500 text-center h-full">No Domestic Transaction record found.</p>
+                            @if ($transactions->isEmpty())
+                                <p class="text-gray-500 text-center h-full">No Credit/Debit Transaction record found.</p>
                             @endif
                         </tbody>
                     </table>

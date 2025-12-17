@@ -322,14 +322,75 @@
             <div class="flex items-center justify-between w-full px-4 py-1 mx-auto flex-wrap-inherit">
                 <nav>
                     <!-- breadcrumb -->
+
                     <ol class="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
                         <li class="text-sm leading-normal">
                             <a class="text-white opacity-50" href="javascript:;">Pages</a>
                         </li>
                         <li class="text-sm pl-2 capitalize leading-normal text-white before:float-left before:pr-2 before:text-white before:content-['/']"
-                            aria-current="page">Dashboard</li>
+                            aria-current="page">
+                            @if (request()->routeIs('user.dashboard'))
+                                Dashboard
+                            @elseif(request()->routeIs('online_deposit'))
+                                Online Deposit
+                            @elseif(request()->routeIs('domestic_transfer'))
+                                Domestic Transfer
+                            @elseif(request()->routeIs('wire_transfer'))
+                                Wire Transfer
+                            @elseif(request()->routeIs('virtual_card'))
+                                Virtual Card
+                            @elseif(request()->routeIs('create.virtual_card'))
+                                Create Virtual Card
+                            @elseif(request()->routeIs('loan_mortgage'))
+                                Loan & Mortgage
+                            @elseif(request()->routeIs('credit_debit'))
+                                Credit / Debit Transaction
+                            @elseif(request()->routeIs('wire'))
+                                Wire Transaction
+                            @elseif(request()->routeIs('domestic'))
+                                Domestic Transaction
+                            @elseif(request()->routeIs('loan_transaction'))
+                                Loan Transaction
+                            @elseif(request()->routeIs('profile'))
+                                Profile
+                            @elseif(request()->routeIs('account_manager'))
+                                Account Manager
+                            @else
+                                Page
+                            @endif
+                        </li>
                     </ol>
-                    <h6 class="mb-0 font-bold text-white capitalize">Dashboard</h6>
+                    <h6 class="mb-0 font-bold text-white capitalize">
+                        @if (request()->routeIs('user.dashboard'))
+                            Dashboard
+                        @elseif(request()->routeIs('online_deposit'))
+                            Online Deposit
+                        @elseif(request()->routeIs('domestic_transfer'))
+                            Domestic Transfer
+                        @elseif(request()->routeIs('wire_transfer'))
+                            Wire Transfer
+                        @elseif(request()->routeIs('virtual_card'))
+                            Virtual Card
+                        @elseif(request()->routeIs('create.virtual_card'))
+                            Create Virtual Card
+                        @elseif(request()->routeIs('loan_mortgage'))
+                            Loan & Mortgage
+                        @elseif(request()->routeIs('credit_debit'))
+                            Credit / Debit Transaction
+                        @elseif(request()->routeIs('wire'))
+                            Wire Transaction
+                        @elseif(request()->routeIs('domestic'))
+                            Domestic Transaction
+                        @elseif(request()->routeIs('loan_transaction'))
+                            Loan Transaction
+                        @elseif(request()->routeIs('profile'))
+                            Profile
+                        @elseif(request()->routeIs('account_manager'))
+                            Account Manager
+                        @else
+                            Page
+                        @endif
+                    </h6>
                 </nav>
 
                 <div class="flex items-center mt-2 grow sm:mt-0 sm:mr-6 md:mr-0 lg:flex lg:basis-auto">
